@@ -90,7 +90,10 @@ def main(unused_argv):
     eval_labels = np.asarray(mnist.test.labels, dtype=np.int32)
     
     #Estimator offers classes you can instantiate to quickly configure common model types such as regressors and classifiers:
-    ## Create the Estimator
+    #The model_fn argument specifies the model function to use for training, evaluation, and prediction; 
+    #we pass it the cnn_model_fn we created above.  The model_dir argument specifies the directory where model data (checkpoints) 
+    #will be saved (here, we specify the temp directory /tmp/mnist_convnet_model, but feel free to change to another directory of your choice).
+    # Create the Estimator
     mnist_classifier = tf.estimator.Estimator(
                                                 model_fn=cnn_model_fn, model_dir="/tmp/mnist_convnet_model")
     
